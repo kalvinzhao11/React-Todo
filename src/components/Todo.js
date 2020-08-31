@@ -12,7 +12,10 @@ import './Todo.css'
 class Todo extends Component{
     render(){
         return (
-            <div className={this.props.todoItem.completed ? 'completed' : ''}>
+            <div 
+                onClick={() => this.props.toggleCompleted(this.props.todoItem.id)}
+                className={this.props.todoItem.completed ? 'completed' : ''}
+                >
                 <p>{this.props.todoItem.task}</p>
             </div>
         )

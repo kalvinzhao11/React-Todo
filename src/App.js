@@ -2,18 +2,7 @@ import React, {Component} from 'react';
 import TodoList from './components/TodoList'
 import TodoForm from './components/TodoForm'
 
-const todoInitial = [
-  {
-    task: 'Organize Garage',
-    id: 1528817077286,
-    completed: true
-  },
-  {
-    task: 'Bake Cookies',
-    id: 1528817084358,
-    completed: false
-  }
-];
+const todoInitial = [];
 
 class App extends Component {
   // you will need a place to store your state in this component.
@@ -37,6 +26,7 @@ class App extends Component {
     })
   }
 
+  // clear button
   clearCompletedTask = () => {
     this.setState({
       todo: this.state.todo.filter(item => {
@@ -45,12 +35,24 @@ class App extends Component {
     })
   }
 
-  // clear button
+  // toggle completed
+  toggleCompleted = (clickedID) => {
+    this.setState({
+      todo: this.state.todo.map(item=>{
+        if (item.id === clickedID) {
+          return {...item, completed: !item.completed}
+        } else {
+          return item
+        }
+      })
+    })
+  }
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList todo={this.state.todo}/>
+        <TodoList todo={this.state.todo} toggleCompleted={this.toggleCompleted}/>
         <TodoForm addTask={this.addTask} clearCompletedTask={this.clearCompletedTask}/>
       </div>
     );
