@@ -6,7 +6,7 @@ const todoInitial = [
   {
     task: 'Organize Garage',
     id: 1528817077286,
-    completed: false
+    completed: true
   },
   {
     task: 'Bake Cookies',
@@ -37,13 +37,21 @@ class App extends Component {
     })
   }
 
+  clearCompletedTask = () => {
+    this.setState({
+      todo: this.state.todo.filter(item => {
+         return item.completed === false
+      })
+    })
+  }
+
   // clear button
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList todo={this.state.todo}/>
-        <TodoForm addTask={this.addTask}/>
+        <TodoForm addTask={this.addTask} clearCompletedTask={this.clearCompletedTask}/>
       </div>
     );
   }

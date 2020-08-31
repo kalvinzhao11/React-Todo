@@ -3,28 +3,28 @@
 
 import React, {Component} from 'react'
 import Todo from './Todo'
-// class TodoList extends Component {
-    
-//     constructor() {
-//         super()
-        
-//     }
-//     render(){
-//         return {
 
-//         }
-//     }
-// }
-const TodoList = (props) => {
-    const {todo} = props
-    return (
-        <div>
-            <p>hi</p>
-            {todo.map(item => (
-                <Todo key={item.id} todoItem={item}/>
-            ))}
-        </div>
-    )
+class TodoList extends Component {
+
+    render(){
+        return (
+            <div>
+                {this.props.todo.map(item => (
+                    <Todo key={item.id} todoItem={item}/>
+                ))}
+            </div>
+        )
+    }
 }
+// const TodoList = (props) => {
+//     const {todo} = props
+//     return (
+//         <div>
+//             {todo.map(item => (
+//                 <Todo key={item.id} todoItem={item}/>
+//             ))}
+//         </div>
+//     )
+// }
 
 export default TodoList

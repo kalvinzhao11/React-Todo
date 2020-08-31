@@ -16,22 +16,23 @@ class ToDoForm extends Component  {
         this.setState({task: ''})
     }
 
-    clearComplete = () => {
-
+    clearComplete = (event) => {
+        event.preventDefault()
+        this.props.clearCompletedTask()
     }
 
     render(){
         return (
-            <div>
+            <form onSubmit={this.addTodo}>
                 <input 
                     type='text' 
                     name='task'
                     value={this.state.task}
                     onChange={this.addTask}>
                 </input>
-                <button onClick={this.addTodo}>Add Todo</button>
+                <button >Add Todo</button>
                 <button onClick={this.clearComplete}>Clear Completed</button>
-            </div>
+            </form>
         )
     }
 }
