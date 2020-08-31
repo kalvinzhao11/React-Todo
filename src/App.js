@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import TodoList from './components/TodoList'
+import TodoForm from './components/TodoForm'
 
 const todoInitial = [
   {
@@ -25,13 +26,15 @@ class App extends Component {
     }
   }
   // submit button
-  addItem = (item) => {
+  addTask = (item) => {
     const toBeAdded = {
       task: item,
-      id: new Date(),
+      id: Date.now(),
       completed: false
     }
-    this.setState({...this.state.todo, toBeAdded})
+    this.setState({
+      todo: [...this.state.todo, toBeAdded]
+    })
   }
 
   // clear button
@@ -40,6 +43,7 @@ class App extends Component {
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList todo={this.state.todo}/>
+        <TodoForm addTask={this.addTask}/>
       </div>
     );
   }
