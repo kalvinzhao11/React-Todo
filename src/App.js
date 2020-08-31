@@ -1,7 +1,18 @@
 import React, {Component} from 'react';
 import TodoList from './components/TodoList'
 
-const todoInitial = [];
+const todoInitial = [
+  {
+    task: 'Organize Garage',
+    id: 1528817077286,
+    completed: false
+  },
+  {
+    task: 'Bake Cookies',
+    id: 1528817084358,
+    completed: false
+  }
+];
 
 class App extends Component {
   // you will need a place to store your state in this component.
@@ -16,9 +27,9 @@ class App extends Component {
   // submit button
   addItem = (item) => {
     const toBeAdded = {
-      name: item,
+      task: item,
       id: new Date(),
-      done: false
+      completed: false
     }
     this.setState({...this.state.todo, toBeAdded})
   }
