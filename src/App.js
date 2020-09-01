@@ -16,7 +16,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // localStorage.setItem('todo-list',JSON.stringify(this.state.todo))
     const data = localStorage.getItem('todo-list')
     if (data) {
       this.setState({todo: JSON.parse(data)})
@@ -37,7 +36,6 @@ class App extends Component {
     this.setState({
       todo: [...this.state.todo, toBeAdded]
     })
-    console.log(JSON.stringify(this.state.todo))
   }
 
   // clear button
