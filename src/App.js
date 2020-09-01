@@ -14,6 +14,19 @@ class App extends Component {
       todo: todoInitial,
     }
   }
+
+  componentDidMount() {
+    // localStorage.setItem('todo-list',JSON.stringify(this.state.todo))
+    const data = localStorage.getItem('todo-list')
+    if (data) {
+      this.setState({todo: JSON.parse(data)})
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('todo-list',JSON.stringify(this.state.todo))
+  }
+
   // submit button
   addTask = (item) => {
     const toBeAdded = {
@@ -24,6 +37,7 @@ class App extends Component {
     this.setState({
       todo: [...this.state.todo, toBeAdded]
     })
+    console.log(JSON.stringify(this.state.todo))
   }
 
   // clear button
